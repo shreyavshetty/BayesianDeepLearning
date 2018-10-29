@@ -35,7 +35,7 @@ often used, such as variational inference [Paper](https://papers.nips.cc/paper/4
     - Training with stochastic gradient descent, using dropout to randomly remove units. During test time, standard dropout approximates the effect of averaging the predictions of all these thinnned networks by using the weights of the unthinned network. This is referred to as weight averaging.[Paper](http://jmlr.org/papers/volume15/srivastava14a.old/srivastava14a.pdf)
     - Dropout as approximate Bayesian inference over the network’s weights. [Paper](https://arxiv.org/pdf/1506.02158.pdf)
 
-**SegNet Architecture-** Since the paper aims at providing bayesian approach to the existing SegNet Architecture, the following gives a brief overview of the architecture itself [Paper](https://arxiv.org/pdf/1511.00561) [Blog](https://saytosid.github.io/segnet/):
+**SegNet Architecture-** Since the paper aims to provide bayesian approach to the existing SegNet Architecture, the following gives a brief overview of the architecture itself [Paper](https://arxiv.org/pdf/1511.00561) [Blog](https://saytosid.github.io/segnet/):
 ![alt text](https://github.com/shreyavshetty/BayesianDeepLearning/blob/master/SegNet_Architecture.png "SegNet Architecture")
 - SegNet is a deep convolutional encoder decoder architecture which consists of a sequence of non-linear processing layers (encoders) and a corresponding set of decoders followed by a pixel-wise classifier.
 - Encoder consists of one or more convolutional layers with batch normalisation and a ReLU non-linearity, followed by non-overlapping max-pooling and sub-sampling. The sparse encoding due to the pooling is upsampled in the decoder using max-pooling indices in the encoding sequences. It helps in retaining the class boundary details in the segmented images and also reducing the total number of model parameters.
@@ -45,6 +45,14 @@ often used, such as variational inference [Paper](https://papers.nips.cc/paper/4
     - Not fully connected(this reduces parameters) 
     - Good initial weights are available 
     - Max-pooling and Subsampling - translation invariance achieved but feature map size reduces leading to lossy image representation with blurred boundaries. Hence, upsampling is done in the decoder. 
+- Decoder Architecture : 
+    - For each of the encoders there is a corresponding decoder which upsamples the feature map using memorised max-pooling indices.To do that it needs to store some information. It is necessary to capture and store boundary information in the encoder feature maps before sub-sampling. In order to to that space efficiently, SegNet stores only the max-pooling indices i.e. the locations of maximum feature value in each pooling window is memorised for each encoder map. Only 2 bits are needed for each window of 2x2, slight loss of precision, but tradeoff.
+![alt text](https://github.com/shreyavshetty/BayesianDeepLearning/blob/master/encoder_explained.png "Upsampling Index")
+    - Sparse feature maps of higher resolutions produced
+    - Sparse maps are fed through a trainable filter bank to produce dense feature maps
+    - The last decoder is connected to a softmax classifier which classifies each pixel
+The model is trained end to end using stochastic gradient descent.
+
 
 
 
