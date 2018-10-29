@@ -47,7 +47,7 @@ often used, such as variational inference [Paper](https://papers.nips.cc/paper/4
     - Max-pooling and Subsampling - translation invariance achieved but feature map size reduces leading to lossy image representation with blurred boundaries. Hence, upsampling is done in the decoder. 
 - Decoder Architecture : 
     - For each of the encoders there is a corresponding decoder which upsamples the feature map using memorised max-pooling indices.To do that it needs to store some information. It is necessary to capture and store boundary information in the encoder feature maps before sub-sampling. In order to to that space efficiently, SegNet stores only the max-pooling indices i.e. the locations of maximum feature value in each pooling window is memorised for each encoder map. Only 2 bits are needed for each window of 2x2, slight loss of precision, but tradeoff.
-![alt text](https://github.com/shreyavshetty/BayesianDeepLearning/blob/master/encoder_explained.png "Upsampling Index")
+![alt text](https://github.com/shreyavshetty/BayesianDeepLearning/blob/master/upsampling_indices.png "Upsampling Index")
     - Sparse feature maps of higher resolutions produced
     - Sparse maps are fed through a trainable filter bank to produce dense feature maps
     - The last decoder is connected to a softmax classifier which classifies each pixel
