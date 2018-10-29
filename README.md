@@ -9,6 +9,9 @@ Overview of the following papers published on Bayesian Deep Learning:
 - Author : Alex Kendall,Vijay Badrinarayanan,Roberto Cipolla - University of Cambridge
 - Published : 10 Oct 2016
 - Link : [Paper](https://arxiv.org/pdf/1511.02680.pdf)
+### Aim
+This paper aims to provide a probabilistic approach to pixel-wise segmentation - SegNet. This paper aims to extend deep convolutional encoder-decoder neural network architecture to Bayesian CNN which can produce a probabilistic segmentation output.
+
 
 
 
