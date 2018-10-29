@@ -13,3 +13,7 @@ Overview of the following papers published on Bayesian Deep Learning:
 This paper aims to provide a probabilistic approach to pixel-wise segmentation - SegNet. This paper also aims to extend deep convolutional encoder-decoder neural network architecture to Bayesian CNN which can produce a probabilistic segmentation output. 
 ### Result
 Modelling uncertainity improved the performance by 2-3% compared to the state-of-art architectures like SegNet, FCN and Dilatio Network. Significant improvement in performance was observered when fed with smaller datasets.
+### Overview
+Segmentation in Computer Vision implies 
+      > partitioning of image into coherent parts without understanding what each component represents
+Semantic Segmentation in particular implies that the images are partitioned into semantically meaningful components. When the same goal is achieved by classifying each pixel then it is termed as pixel wise semantic segmentation. 
