@@ -6,5 +6,11 @@ Overview of the following papers published on Bayesian Deep Learning:
 
 ## What Uncertainties Do We Need in Bayesian Deep Learning for Computer Vision?
 
+Author : Alex Kendall,Vijay Badrinarayanan,Roberto Cipolla - University of Cambridge
+Published : 10 Oct 2016
+Link : https://arxiv.org/pdf/1511.02680.pdf
+
+
+
 
 
