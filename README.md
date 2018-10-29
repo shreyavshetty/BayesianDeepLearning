@@ -52,8 +52,9 @@ often used, such as variational inference [Paper](https://papers.nips.cc/paper/4
     - Sparse maps are fed through a trainable filter bank to produce dense feature maps
     - The last decoder is connected to a softmax classifier which classifies each pixel
 For each of the 13 encoders there is a corresponding decoder. The model is trained end to end using stochastic gradient descent. 
-**Bayesian SegNet Architecture**
-Key Ideas
+
+**Key aspects of Bayesian SegNet Architecture**
+
 - Necessity to find the posterior distribution over the convolutional weights, W, given observed training data X and labels Y. p(W | X, Y). This is difficult to trace. Hence, approximate using variational inference. 
 - Let q(W) be the distribution over the network's weights, minimizing the Kullback-Leibler (KL) divergence between this approximating distribution and the full posterior: KL(q(W) || p(W | X, Y)) [Paper](https://arxiv.org/pdf/1506.02158.pdf)
 - Using stochastic gradient descent, minimizes the divergence term.
