@@ -27,10 +27,17 @@ Segmentation in Computer Vision implies  partitioning of image into coherent par
     - Fully Convolutional Networks (FCN)
     - Dilation Network
 None of the above methods provide produce a probabilistic segmentation with a measure of model uncertainty.
-- Baysian Deep Learning Approaches
+- Bayesian Deep Learning Approaches
     - Bayesian neural networks [Paper1](https://papers.nips.cc/paper/419-transforming-neural-net-output-levels-to-probability-distributions.pdf) [Paper2](https://authors.library.caltech.edu/13793/). They offer a probabilistic interpretation of deep learning models by inferring distributions over the networks weights. They are often computationally very expensive, increasing the number of model
 parameters without increasing model capacity significantly.
     - Performing inference in Bayesian neural networks is a difficult task, and approximations to the model posterior are
 often used, such as variational inference [Paper](https://papers.nips.cc/paper/4329-practical-variational-inference-for-neural-networks)
     - Training with stochastic gradient descent, using dropout to randomly remove units. During test time, standard dropout approximates the effect of averaging the predictions of all these thinnned networks by using the weights of the unthinned network. This is referred to as weight averaging.[Paper](http://jmlr.org/papers/volume15/srivastava14a.old/srivastava14a.pdf)
     - Dropout as approximate Bayesian inference over the network’s weights. [Paper](https://arxiv.org/pdf/1506.02158.pdf)
+
+**SegNet Architecture-** Since the paper aims at adding bayesian approach to the existing SegNet Architecture, the follows gives a brief overview of the architecture itself [Paper](https://arxiv.org/pdf/1511.00561):
+- SegNet is a deep convolutional encoder decoder architecture which consists of a sequence of non-linear processing layers (encoders) and a corresponding set of decoders followed by a pixel-wise classifier.
+- Encoder consists of one or more convolutional layers with batch normalisation and a ReLU non-linearity, followed by non-overlapping max-pooling and sub-sampling. The sparse encoding due to the pooling is upsampled in the decoder using max-pooling indices in the encoding sequences. It helps in retaining the class boundary details in the segmented images and also reducing the total number of model parameters.
+
+
+
