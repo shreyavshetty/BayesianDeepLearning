@@ -66,8 +66,12 @@ For each of the 13 encoders there is a corresponding decoder. The model is train
     - Bayesian Center: insert dropout after the deepest encoder, between the encoder and decoder stage.
     - Bayesian Central Four Encoder-Decoder: insert dropout after the central four encoder and decoder units.
     - Bayesian Classifier: insert dropout after the last decoder unit, before the classifier.
-
-
+  
+  **Comparing Weight Averaging and Monte Carlo Dropout Sampling**
+  
+  Weight averaging proposes to remove dropout at test time and scale the weights proportionally to the dropout percentage. Monte Carlo sampling with dropout performs better than weight averaging after approximately 6 samples. Weight
+averaging technique produces poorer segmentation results,in terms of global accuracy, in addition to being unable to
+provide a measure of model uncertainty. 
 
 
 
