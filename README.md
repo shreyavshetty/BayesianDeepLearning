@@ -35,9 +35,12 @@ often used, such as variational inference [Paper](https://papers.nips.cc/paper/4
     - Training with stochastic gradient descent, using dropout to randomly remove units. During test time, standard dropout approximates the effect of averaging the predictions of all these thinnned networks by using the weights of the unthinned network. This is referred to as weight averaging.[Paper](http://jmlr.org/papers/volume15/srivastava14a.old/srivastava14a.pdf)
     - Dropout as approximate Bayesian inference over the network’s weights. [Paper](https://arxiv.org/pdf/1506.02158.pdf)
 
-**SegNet Architecture-** Since the paper aims at adding bayesian approach to the existing SegNet Architecture, the follows gives a brief overview of the architecture itself [Paper](https://arxiv.org/pdf/1511.00561):
+**SegNet Architecture-** Since the paper aims at providing bayesian approach to the existing SegNet Architecture, the following gives a brief overview of the architecture itself [Paper](https://arxiv.org/pdf/1511.00561) [Blog](https://saytosid.github.io/segnet/):
 - SegNet is a deep convolutional encoder decoder architecture which consists of a sequence of non-linear processing layers (encoders) and a corresponding set of decoders followed by a pixel-wise classifier.
 - Encoder consists of one or more convolutional layers with batch normalisation and a ReLU non-linearity, followed by non-overlapping max-pooling and sub-sampling. The sparse encoding due to the pooling is upsampled in the decoder using max-pooling indices in the encoding sequences. It helps in retaining the class boundary details in the segmented images and also reducing the total number of model parameters.
+Encoder 
+-------
+
 
 
 
