@@ -14,4 +14,5 @@ This paper aims to provide a probabilistic approach to pixel-wise segmentation -
 ### Result
 Modelling uncertainity improved the performance by 2-3% compared to the state-of-art architectures like SegNet, FCN and Dilatio Network. Significant improvement in performance was observered when fed with smaller datasets.
 ### Overview
+**Pixel wise Semantic Segmentation -**
 Segmentation in Computer Vision implies  partitioning of image into coherent parts without understanding what each component represents. Semantic Segmentation in particular implies that the images are partitioned into semantically meaningful components. When the same goal is achieved by classifying each pixel then it is termed as pixel wise semantic segmentation. 
