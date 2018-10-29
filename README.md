@@ -51,7 +51,8 @@ often used, such as variational inference [Paper](https://papers.nips.cc/paper/4
     - Sparse feature maps of higher resolutions produced
     - Sparse maps are fed through a trainable filter bank to produce dense feature maps
     - The last decoder is connected to a softmax classifier which classifies each pixel
-The model is trained end to end using stochastic gradient descent.
+For each of the 13 encoders there is a corresponding decoder.The model is trained end to end using stochastic gradient descent. 
+
 
 
 
