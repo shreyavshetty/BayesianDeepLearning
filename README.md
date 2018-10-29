@@ -40,6 +40,7 @@ often used, such as variational inference [Paper](https://papers.nips.cc/paper/4
 - SegNet is a deep convolutional encoder decoder architecture which consists of a sequence of non-linear processing layers (encoders) and a corresponding set of decoders followed by a pixel-wise classifier.
 - Encoder consists of one or more convolutional layers with batch normalisation and a ReLU non-linearity, followed by non-overlapping max-pooling and sub-sampling. The sparse encoding due to the pooling is upsampled in the decoder using max-pooling indices in the encoding sequences. It helps in retaining the class boundary details in the segmented images and also reducing the total number of model parameters.
 - Encoder Architecture : 
+![alt text](https://github.com/shreyavshetty/BayesianDeepLearning/blob/master/encoder_explained.png "Encoder Architecture")
     - 13 VGG16 Conv layers
     - Not fully connected(this reduces parameters) 
     - Good initial weights are available 
