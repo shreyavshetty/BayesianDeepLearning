@@ -59,6 +59,13 @@ For each of the 13 encoders there is a corresponding decoder. The model is train
 - Let q(W) be the distribution over the network's weights, minimizing the Kullback-Leibler (KL) divergence between this approximating distribution and the full posterior: KL(q(W) || p(W | X, Y)) [Paper](https://arxiv.org/pdf/1506.02158.pdf)
 - Using stochastic gradient descent, minimizes the divergence term.
 - Use dropouts to form a probabilistic encoder-decoder architecture. This is kept as 0.5. Sample the posterior distribution over the weights at test time using dropout to obtain the posterior distribution of softmax class probabilities. Take the mean of these samples for segmentation prediction and use the variance to output model uncertainty for each class. The mean of the per class variance measurements as an overall measure of model uncertainty. 
+- Probabilistic Variants of this architecture :
+    - Bayesian Encoder: insert dropout after each encoder unit.
+    - Bayesian Decoder: insert dropout after each decoder unit.
+    - Bayesian Encoder-Decoder: insert dropout after each encoder and decoder unit.
+    - Bayesian Center: insert dropout after the deepest encoder, between the encoder and decoder stage.
+    - Bayesian Central Four Encoder-Decoder: insert dropout after the central four encoder and decoder units.
+    - Bayesian Classifier: insert dropout after the last decoder unit, before the classifier.
 
 
 
