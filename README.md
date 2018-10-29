@@ -16,6 +16,7 @@ Modelling uncertainity improved the performance by 2-3% compared to the state-of
 ### Overview
 **Pixel wise Semantic Segmentation -**
 Segmentation in Computer Vision implies  partitioning of image into coherent parts without understanding what each component represents. Semantic Segmentation in particular implies that the images are partitioned into semantically meaningful components. When the same goal is achieved by classifying each pixel then it is termed as pixel wise semantic segmentation. 
+
 **Related Work**
 - Non Deep Learning Approaches
     - TextonBoost
