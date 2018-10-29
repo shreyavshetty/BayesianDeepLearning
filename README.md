@@ -16,3 +16,20 @@ Modelling uncertainity improved the performance by 2-3% compared to the state-of
 ### Overview
 **Pixel wise Semantic Segmentation -**
 Segmentation in Computer Vision implies  partitioning of image into coherent parts without understanding what each component represents. Semantic Segmentation in particular implies that the images are partitioned into semantically meaningful components. When the same goal is achieved by classifying each pixel then it is termed as pixel wise semantic segmentation. 
+**Related Work**
+- Non Deep Learning Approaches
+    - TextonBoost
+    - TextonForest
+    - Random Forest Based Classifiers
+- Deep Learning Approaches - Core Segmentation Engine
+    - SegNet
+    - Fully Convolutional Networks (FCN)
+    - Dilation Network
+None of the above methods provide produce a probabilistic segmentation with a measure of model uncertainty.
+- Baysian Deep Learning Approaches
+    - Bayesian neural networks [Paper1](https://papers.nips.cc/paper/419-transforming-neural-net-output-levels-to-probability-distributions.pdf) [Paper2](https://authors.library.caltech.edu/13793/). They offer a probabilistic interpretation of deep learning models by inferring distributions over the networks weights. They are often computationally very expensive, increasing the number of model
+parameters without increasing model capacity significantly.
+    - Performing inference in Bayesian neural networks is a difficult task, and approximations to the model posterior are
+often used, such as variational inference [Paper](https://papers.nips.cc/paper/4329-practical-variational-inference-for-neural-networks)
+    - Training with stochastic gradient descent, using dropout to randomly remove units. During test time, standard dropout approximates the effect of averaging the predictions of all these thinnned networks by using the weights of the unthinned network. This is referred to as weight averaging.[Paper](http://jmlr.org/papers/volume15/srivastava14a.old/srivastava14a.pdf)
+    - Dropout as approximate Bayesian inference over the network’s weights. [Paper](https://arxiv.org/pdf/1506.02158.pdf)
