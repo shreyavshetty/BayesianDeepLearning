@@ -73,9 +73,19 @@ For each of the 13 encoders there is a corresponding decoder. The model is train
 averaging technique produces poorer segmentation results,in terms of global accuracy, in addition to being unable to
 provide a measure of model uncertainty. 
 
-
-
-
-
-
-
+##  What Uncertainties Do We Need in Bayesian Deep Learning for Computer Vision?
+- Author : Alex Kendall,Yarin Gal - University of Cambridge
+- Published : 5 Oct 2017
+- Link : [Paper](https://arxiv.org/pdf/1703.04977)
+### Aim
+- Bayesian Framework combining aleatoric uncertainty and epistemic uncertainty.
+- New loss functions that captures uncertainity for segmentation and depth regression benchmarks tasks - gives state-of-art results
+- Improve model performance by 1 − 3% over non-Bayesian baselines by reducing the effect of noisy data with the implied attenuation
+### Overview
+Quantifying uncertainty in computer vision applications can be largely divided into regression set-
+tings such as depth regression, and classification settings such as semantic segmentation. Two main types of uncertainty:
+- Aleatoric uncertainty captures noise inherent in the observations. This could be for example sensor noise or motion
+noise, resulting in uncertainty which cannot be reduced even if more data were to be collected.This is modelled by placing a distribution over the output of the model.
+    - homoscedastic uncertainty- uncertainty which stays constant for different inputs.
+    - heteroscedastic uncertainty - uncertainty depends on the inputs to the model
+- Epistemic uncertainty accounts for uncertainty in the model parameters. It captures ignorance about which model generated our collected data. This uncertainty can be explained away given enough data, and is often referred to as model uncertainty.  This is modelled by placing a prior distribution over a model’s weights, and then trying to capture how much these weights vary given some data. 
