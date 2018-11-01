@@ -167,18 +167,29 @@ Quantifying uncertainty in computer vision applications can be largely divided i
 noise, resulting in uncertainty which cannot be reduced even if more data were to be collected. This is modelled by placing a distribution over the output of the model.
     - homoscedastic uncertainty- uncertainty which stays constant for different inputs. Homoscedastic regression assumes constant observation noise σ for every input point x. 
     - heteroscedastic uncertainty - uncertainty depends on the inputs to the model. The observation noise can vary with input x.
-      Equation:
-		
-      Variational inference is performed over the the model output - MAP Inference. learned loss attenuation – making the loss more robust to noisy data.
+    
 - Epistemic uncertainty accounts for uncertainty in the model parameters. It captures ignorance about which model generated our collected data. This uncertainty can be explained away given enough data, and is often referred to as model uncertainty.  This is modelled by placing a prior distribution over a model’s weights, and then trying to capture how much these weights vary given some data. 
 We are required to evaluate the posterior p(W|X, Y) = p(Y|X, W)p(W)/p(Y|X),cannot be evaluated analytically. Hence, we approximate it.This replaces the intractable problem of averaging over all weights in the BNN with an optimisation task, where we seek to optimise over the parameters of the simple distribution instead of optimising the original neural network’s parameters. We also make use of Dropout variational inference to approximate the models. This inference is done by training a model with dropout before every weight layer,and by also performing dropout at test time to sample from the approximate posterior (stochastic forward passes, referred to as Monte Carlo dropout). More formally, this approach is equivalent to performing approximate variational inference where we find a simple distribution in a tractable family which minimises the Kullback-Leibler (KL) divergence to the true model posterior p(W|X, Y). Dropout can be interpreted as a variational Bayesian approximation. Epistemic uncertainty in the weights can be reduced by observing more data. This uncertainty induces prediction uncertainty by marginalising over the (approximate) weights posterior distribution. 
 - Classification Equation: Monte Carlo integration 
-- Regression Equation: Uncertainty is captured by the predictive variance. Two terms:
+
+![alt text](https://github.com/shreyavshetty/BayesianDeepLearning/blob/master/Classification_Eq.png "Classifier_Eq")
+
+- Regression Equation: Uncertainty is captured by the predictive variance.
+
+![alt text](https://github.com/shreyavshetty/BayesianDeepLearning/blob/master/Regression_Eq.png "Regression_Eq")
+
+Two terms:
 			- first term - sigma sq indicates the noise inherent in the data
 			- second term - how much the model is uncertain about its predictions – this term will vanish when we have zero parameter uncertainty
 **Combining Aleatoric and Epistemic Uncertainty in One Model**
-We can use a single network to transform the input x, with its head split to predict both ŷ as well as σ̂ 2. This loss consists of two components - the residual regression obtained with a stochastic sample through the model – making use of the uncertainty over the parameters – and an uncertainty regularization term.
+Heteroscedastic equation can be turned into a Bayesian NN by placing a distribution over its weights.
+We can use a single network to transform the input x, with its head split to predict both ŷ as well as σ̂ 2. 
+![alt text](https://github.com/shreyavshetty/BayesianDeepLearning/blob/master/Eq.png "Eq")
+
+This loss consists of two components - the residual regression obtained with a stochastic sample through the model – making use of the uncertainty over the parameters – and an uncertainty regularization term. We do not need ‘uncertainty labels’ to learn uncertainty. Rather, we only need to supervise the learning of the regression task. We learn the variance, σ^2 , implicitly from the loss function. The second regularization term prevents the network from predicting infinite uncertainty
+(and therefore zero loss) for all data points.In practice, we train the network to predict the log variance. This is because it is more numerically stable than regressing the variance, σ^2 , as the loss avoids a potential division by zero.
+
 Heteroscedastic Uncertainty as Learned Loss Attenuation - this makes the model more robust to noisy data: inputs for which the model learned to predict high uncertainty will have a smaller effect on the loss. The model is discouraged from predicting high uncertainty for all points – in effect ignoring the data – through the log σ 2 term. Large uncertainty increases the contribution of this term, and in turn penalizes the model: The model can learn to ignore the data – but is penalised for that. The model is also discouraged from predicting very low uncertainty for points with high residual error, as low σ 2 will exaggerate the contribution of the residual and will penalize the model. It is important to stress that this learned attenuation is not an ad-hoc construction, but a consequence of the probabilistic
 interpretation of the model.It is important to stress that this learned attenuation is not an ad-hoc construction, but a consequence of the probabilistic interpretation of the model. 
-### Multi-Task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics
+
 
