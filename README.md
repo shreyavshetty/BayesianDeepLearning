@@ -1,7 +1,7 @@
 # BayesianDeepLearning
 
 Reference : Machine Learning: A Probabilistic Perspective,Kevin Murphy
-
+In machine learning, probability is used to model concepts.
 Two ways to look at probability :
 - Frequentist Interpretation : It represents long run of events. Eg - Flip the coin many times - lands head half the time.
 - Bayesian Interpretation : It quantifies the uncertainity about something - related to information rather than number of trails. Eg - Coin is equally likely to land head/toss on the next toss.
@@ -31,13 +31,23 @@ Fundamental Rules:
 Given joint distribution on two events P(A,B), we define the marginal distribution as follows :
 <a href="https://www.codecogs.com/eqnedit.php?latex=P(A)&space;=&space;\sum&space;P(A,B)&space;=&space;\sum&space;P(A|B)&space;*&space;P(B)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A)&space;=&space;\sum&space;P(A,B)&space;=&space;\sum&space;P(A|B)&space;*&space;P(B)" title="P(A) = \sum P(A,B) = \sum P(A|B) * P(B)" /></a>
 
-Sum Rule :
+Sum Rule : <a href="https://www.codecogs.com/eqnedit.php?latex=P(A)&space;=&space;\sum_{b}&space;P(A,B)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A)&space;=&space;\sum_{b}&space;P(A,B)" title="P(A) = \sum_{b} P(A,B)" /></a>
+
+Product Rule : <a href="https://www.codecogs.com/eqnedit.php?latex=P(A,B)&space;=&space;P(B|A)&space;*&space;P(A)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A,B)&space;=&space;P(B|A)&space;*&space;P(A)" title="P(A,B) = P(B|A) * P(A)" /></a>
 
 Conditional Probability of event A given event B is true, as follows :
 <a href="https://www.codecogs.com/eqnedit.php?latex=P(A|B)&space;=&space;P(A,B)/P(B),&space;if&space;P(B)&space;>&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A|B)&space;=&space;P(A,B)/P(B),&space;if&space;P(B)&space;>&space;0" title="P(A|B) = P(A,B)/P(B), if P(B) > 0" /></a>
 
 Bayes Rule : <a href="https://www.codecogs.com/eqnedit.php?latex=P(A|B)&space;=&space;\frac{P(A)*P(B|A)}{P(B)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A|B)&space;=&space;\frac{P(A)*P(B|A)}{P(B)}" title="P(A|B) = \frac{P(A)*P(B|A)}{P(B)}" /></a>
 
+This bayesian probability talks about partial beliefs and calculates the validity of a proposition. This calculation is based on :
+- Prior Estimate
+- New relevant evidence
+
+Probability of a given hypothesis given data -<a href="https://www.codecogs.com/eqnedit.php?latex=P(h|D)&space;=&space;\frac{P(D|h)*P(h)}{P(D)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(h|D)&space;=&space;\frac{P(D|h)*P(h)}{P(D)}" title="P(h|D) = \frac{P(D|h)*P(h)}{P(D)}" /></a>
+Goal of Bayes Learning is to achieve the most probabale hypothesis - (MAP)  - <a href="https://www.codecogs.com/eqnedit.php?latex=argmax_{h\sqsubset&space;H}&space;P(h|D)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?argmax_{h\sqsubset&space;H}&space;P(h|D)" title="argmax_{h\sqsubset H} P(h|D)" /></a>
+Since P(D) is independent of the hypothesis, this can be eliminated. Also, for all hypothesis P(h) is equal. Hemce, that can be eliminated too. So, the final equation so obtained will involve maximizing the likelihood.
+<a href="https://www.codecogs.com/eqnedit.php?latex=h_{ML}&space;=&space;argmax_{h\subset&space;H}&space;P(D|h)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?h_{ML}&space;=&space;argmax_{h\subset&space;H}&space;P(D|h)" title="h_{ML} = argmax_{h\subset H} P(D|h)" /></a>
 
 Overview of the following papers published on Bayesian Deep Learning:
 1. Bayesian SegNet: Model Uncertainty in Deep Convolutional Encoder-Decoder Architectures for Scene Understanding
