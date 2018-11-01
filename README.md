@@ -6,8 +6,35 @@ Two ways to look at probability :
 - Frequentist Interpretation : It represents long run of events. Eg - Flip the coin many times - lands head half the time.
 - Bayesian Interpretation : It quantifies the uncertainity about something - related to information rather than number of trails. Eg - Coin is equally likely to land head/toss on the next toss.
 
+Bayesian Approach has an advantage as it helps in modelling uncertainities of an event that does not occur frequenty. For example, probabaility of melting of ice at 2020 CE. This event ocurrs either once or never. Hence, does not occur frequently. This probabaility indicated how certain/uncertain is it to state that ice will melt at 2020 CE.
 
+Overview of Probability Theory :
+Ramdom Variable, say X, is a variable whose possible values are numerical outcomes of a random phenomenon. 
+P(X) -> Probabaility that the event X is true.
+P(~X) -> Probabaility that the event not X. 1-P(X)
+Two types of Random Variables :
+- Discrete Random :  A random variable that takes only a countable number of distinct values
+P(X=x) -> PMF -> Probability Mass Function
+- Continuous Random : A random variable that takes infinite number of possible value
+P(X=x) -> PDF -> Probability Density Function
 
+Fundamental Rules:
+- Union of 2 Events: 
+<a href="https://www.codecogs.com/eqnedit.php?latex=P(A\cup&space;B)&space;=&space;P(A)&space;&plus;&space;P(B)&space;-&space;P(A\bigcap&space;B)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A\cup&space;B)&space;=&space;P(A)&space;&plus;&space;P(B)&space;-&space;P(A\bigcap&space;B)" title="P(A\cup B) = P(A) + P(B) - P(A\bigcap B)" /></a>
+
+     - If two events are independent of each other then: 
+<a href="https://www.codecogs.com/eqnedit.php?latex=P(A\cup&space;B)&space;=&space;P(A)&space;&plus;&space;P(B)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A\cup&space;B)&space;=&space;P(A)&space;&plus;&space;P(B)" title="P(A\cup B) = P(A) + P(B)" /></a>
+
+- Joint Probabilities :
+<a href="https://www.codecogs.com/eqnedit.php?latex=P(A,B)&space;=&space;P(A\bigcap&space;B)&space;=&space;P(A|B)&space;*&space;P(B)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A,B)&space;=&space;P(A\bigcap&space;B)&space;=&space;P(A|B)&space;*&space;P(B)" title="P(A,B) = P(A\bigcap B) = P(A|B) * P(B)" /></a>
+
+Given joint distribution on two events P(A,B), we define the marginal distribution as follows :
+<a href="https://www.codecogs.com/eqnedit.php?latex=P(A)&space;=&space;\sum&space;P(A,B)&space;=&space;\sum&space;P(A|B)&space;*&space;P(B)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A)&space;=&space;\sum&space;P(A,B)&space;=&space;\sum&space;P(A|B)&space;*&space;P(B)" title="P(A) = \sum P(A,B) = \sum P(A|B) * P(B)" /></a>
+
+Conditional Probability of event A given event B is true, as follows :
+<a href="https://www.codecogs.com/eqnedit.php?latex=P(A|B)&space;=&space;P(A,B)/P(B),&space;if&space;P(B)&space;>&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A|B)&space;=&space;P(A,B)/P(B),&space;if&space;P(B)&space;>&space;0" title="P(A|B) = P(A,B)/P(B), if P(B) > 0" /></a>
+
+Bayes Rule : <a href="https://www.codecogs.com/eqnedit.php?latex=P(A|B)&space;=&space;\frac{P(A)*P(B|A)}{P(B)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A|B)&space;=&space;\frac{P(A)*P(B|A)}{P(B)}" title="P(A|B) = \frac{P(A)*P(B|A)}{P(B)}" /></a>
 
 Overview of the following papers published on Bayesian Deep Learning:
 1. Bayesian SegNet: Model Uncertainty in Deep Convolutional Encoder-Decoder Architectures for Scene Understanding
