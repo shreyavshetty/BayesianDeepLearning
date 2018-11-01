@@ -31,10 +31,13 @@ Fundamental Rules:
 Given joint distribution on two events P(A,B), we define the marginal distribution as follows :
 <a href="https://www.codecogs.com/eqnedit.php?latex=P(A)&space;=&space;\sum&space;P(A,B)&space;=&space;\sum&space;P(A|B)&space;*&space;P(B)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A)&space;=&space;\sum&space;P(A,B)&space;=&space;\sum&space;P(A|B)&space;*&space;P(B)" title="P(A) = \sum P(A,B) = \sum P(A|B) * P(B)" /></a>
 
+Sum Rule :
+
 Conditional Probability of event A given event B is true, as follows :
 <a href="https://www.codecogs.com/eqnedit.php?latex=P(A|B)&space;=&space;P(A,B)/P(B),&space;if&space;P(B)&space;>&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A|B)&space;=&space;P(A,B)/P(B),&space;if&space;P(B)&space;>&space;0" title="P(A|B) = P(A,B)/P(B), if P(B) > 0" /></a>
 
 Bayes Rule : <a href="https://www.codecogs.com/eqnedit.php?latex=P(A|B)&space;=&space;\frac{P(A)*P(B|A)}{P(B)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P(A|B)&space;=&space;\frac{P(A)*P(B|A)}{P(B)}" title="P(A|B) = \frac{P(A)*P(B|A)}{P(B)}" /></a>
+
 
 Overview of the following papers published on Bayesian Deep Learning:
 1. Bayesian SegNet: Model Uncertainty in Deep Convolutional Encoder-Decoder Architectures for Scene Understanding
