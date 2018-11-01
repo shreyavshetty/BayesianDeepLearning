@@ -1,6 +1,7 @@
 # BayesianDeepLearning
 
 Reference : Machine Learning: A Probabilistic Perspective,Kevin Murphy
+
 In machine learning, probability is used to model concepts.
 Two ways to look at probability :
 - Frequentist Interpretation : It represents long run of events. Eg - Flip the coin many times - lands head half the time.
@@ -107,8 +108,11 @@ For each of the 13 encoders there is a corresponding decoder. The model is train
 
 - Necessity to find the posterior distribution over the convolutional weights, W, given observed training data X and labels Y. p(W | X, Y). This is difficult to trace. Hence, approximate using variational inference. 
 - Let q(W) be the distribution over the network's weights, minimizing the Kullback-Leibler (KL) divergence between this approximating distribution and the full posterior: KL(q(W) || p(W | X, Y)) [Paper](https://arxiv.org/pdf/1506.02158.pdf)
-- Using stochastic gradient descent, minimizes the divergence term.
-- Use dropouts to form a probabilistic encoder-decoder architecture. This is kept as 0.5. Sample the posterior distribution over the weights at test time using dropout to obtain the posterior distribution of softmax class probabilities. Take the mean of these samples for segmentation prediction and use the variance to output model uncertainty for each class. The mean of the per class variance measurements as an overall measure of model uncertainty. 
+- Minimising the cross entropy loss objective function has the effect of minimising the Kullback-Leibler divergence term
+- Using stochastic gradient descent, minimizes the divergence term. Therefore training the network with stochastic gradient descent will encourage the model to learn a distribution of weights which explains the data well while preventing overfitting. 
+- Use dropouts to form a probabilistic encoder-decoder architecture. This is kept as 0.5. Sample the posterior distribution over the weights at test time using dropout to obtain the posterior distribution of softmax class probabilities. Take the mean of these samples for segmentation prediction and use the variance to output model uncertainty for each class. The mean of the per class variance measurements as an overall measure of model uncertainty.
+- We use batch normalisation layers after every convolutional layer
+- The whole system is trained end-to-end using stochastic gradient descent with a base learning rate of 0.001 and weight decay parameter equal to 0.0005. We train the network until convergence when we observe no further reduction in training loss.
 - Probabilistic Variants of this architecture :
     - Bayesian Encoder: insert dropout after each encoder unit.
     - Bayesian Decoder: insert dropout after each decoder unit.
@@ -117,11 +121,37 @@ For each of the 13 encoders there is a corresponding decoder. The model is train
     - Bayesian Central Four Encoder-Decoder: insert dropout after the central four encoder and decoder units.
     - Bayesian Classifier: insert dropout after the last decoder unit, before the classifier.
   
-  **Comparing Weight Averaging and Monte Carlo Dropout Sampling**
-  
-  Weight averaging proposes to remove dropout at test time and scale the weights proportionally to the dropout percentage. Monte Carlo sampling with dropout performs better than weight averaging after approximately 6 samples. Weight
+**Comparing Weight Averaging and Monte Carlo Dropout Sampling**
+Weight averaging proposes to remove dropout at test time and scale the weights proportionally to the dropout percentage. Monte Carlo sampling with dropout performs better than weight averaging after approximately 6 samples. Weight
 averaging technique produces poorer segmentation results,in terms of global accuracy, in addition to being unable to
 provide a measure of model uncertainty. 
+
+**Experiments**
+Bayesian Deep Learning performs well on the following dataset:
+- CamVid Dataset
+	- CamVid is a small road scene understanding dataset.
+	- Segment 11 classes.
+	- Comparision based on depth and motion cues.
+	- Bayesian SegNet obtains the highest overall class average and mean intersection over union score by a significant margin.
+- Scene Understanding (SUN)
+	- Large dataset of indoor scenes.
+	- 37 indoor scene classes.
+	- Bayesian SegNet outperforms all previous benchmarks, including those which use depth modality.
+- Pascal VOC
+	- Segmentation challenge
+	- 20 salient object class
+	- Involves learning both classes and their spatial context
+	
+**Understanding Modelling Uncertainity**
+- Qualitative observations
+Segmentation predictions are smooth, with a sharp segmentation around object boundaries. These results also show that when the model predicts an incorrect label, the model uncertainty is generally very high. High model uncertainity due to:
+	- At class boundaries the model often displays a high level of uncertainty. This reflects the ambiguity surrounding the definition of defining where these labels transition.
+	- Visually difficult to identify - objects are occluded or at a distance from the camera.
+	- Visually ambiguous to the model.
+- Quantitative observation
+Relationship between uncertainity vs accuracy and between uncertainity vs frequency of each class in the dataset.Uncertainty is calculated as the mean uncertainty value for each pixel of that class in a test dataset. We observe an inverse  relationship between uncertainty and class accuracy or class frequency. This shows that the model is more confident about classes which are easier or occur more often, and less certain about rare and challenging classes.
+
+ 
 
 ##  What Uncertainties Do We Need in Bayesian Deep Learning for Computer Vision?
 - Author : Alex Kendall,Yarin Gal - University of Cambridge
