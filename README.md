@@ -1,6 +1,7 @@
 # BayesianDeepLearning
 
 Reference : Machine Learning: A Probabilistic Perspective,Kevin Murphy
+
 Two ways to look at probability :
 - Frequentist Interpretation : It represents long run of events. Eg - Flip the coin many times - lands head half the time.
 - Bayesian Interpretation : It quantifies the uncertainity about something - related to information rather than number of trails. Eg - Coin is equally likely to land head/toss on the next toss.
