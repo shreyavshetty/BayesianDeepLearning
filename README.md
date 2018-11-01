@@ -1,4 +1,13 @@
 # BayesianDeepLearning
+
+Reference : Machine Learning: A Probabilistic Perspective,Kevin Murphy
+Two ways to look at probability :
+- Frequentist Interpretation : It represents long run of events. Eg - Flip the coin many times - lands head half the time.
+- Bayesian Interpretation : It quantifies the uncertainity about something - related to information rather than number of trails. Eg - Coin is equally likely to land head/toss on the next toss.
+
+
+
+
 Overview of the following papers published on Bayesian Deep Learning:
 1. Bayesian SegNet: Model Uncertainty in Deep Convolutional Encoder-Decoder Architectures for Scene Understanding
 2. What Uncertainties Do We Need in Bayesian Deep Learning for Computer Vision?
