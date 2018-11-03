@@ -194,4 +194,25 @@ This loss consists of two components - the residual regression obtained with a s
 Heteroscedastic Uncertainty as Learned Loss Attenuation - this makes the model more robust to noisy data: inputs for which the model learned to predict high uncertainty will have a smaller effect on the loss. The model is discouraged from predicting high uncertainty for all points – in effect ignoring the data – through the log σ 2 term. Large uncertainty increases the contribution of this term, and in turn penalizes the model: The model can learn to ignore the data – but is penalised for that. The model is also discouraged from predicting very low uncertainty for points with high residual error, as low σ 2 will exaggerate the contribution of the residual and will penalize the model. It is important to stress that this learned attenuation is not an ad-hoc construction, but a consequence of the probabilistic
 interpretation of the model.It is important to stress that this learned attenuation is not an ad-hoc construction, but a consequence of the probabilistic interpretation of the model. 
 
+Heteroscedastic Uncertainty in Classification Tasks :For classification tasks our NN predicts a vector of unaries f i for each pixel i, which when passed through a softmax operation, forms a probability vector p i . The model is changed by placing a Gaussian distribution over the unaries vector:
+![alt text](https://github.com/shreyavshetty/BayesianDeepLearning/blob/master/Eq4.png "Eq4")
 
+Monte Carlo integration is uesd and sample unaries through the softmax function. The equation is as follows:
+![alt text](https://github.com/shreyavshetty/BayesianDeepLearning/blob/master/Eq5.png "Eq5")
+
+Experiments : 
+- Semantic Segmentation 
+	- CamVid - intersection over union (IoU) score of 67.5% - The implicit attenuation obtained from the aleatoric loss provides a larger improvement than the epistemic uncertainty model. However, the combination of both uncertainties improves performance even further.
+	- NYU Dataset - This dataset is much harder than CamVid because there is significantly less structure in indoor scenes. Improves baseline performance by giving the model flexibility to estimate uncertainty and attenuate the loss.
+- Pixel-wise Depth Regression
+	
+What Do Aleatoric and Epistemic Uncertainties Capture?
+- Quality of Uncertainty Metric
+	- precision-recall curves for regression and classification models show how model performance improves by removing pixels with uncertainty larger than various percentile thresholds.
+	- correlate well with accuracy and precision
+	- the curves for epistemic and aleatoric uncertainty models are very similar. This suggests that when only one uncertainty is explicitly modeled, it attempts to compensate for the lack of the alternative uncertainty when possible
+	
+Uncertainty with Distance from Training Data
+- Epistemic uncertainty decreases as the training dataset gets larger.
+- Aleatoric uncertainty remains relatively constant and cannot be explained away with more data
+- Testing the models with a different test set shows that epistemic uncertainty increases considerably 
