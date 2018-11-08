@@ -221,9 +221,9 @@ Uncertainty with Distance from Training Data
 - Author : Alex Kendall,Yarin Gal,Roberto Cipolla
 - Published : 24 April 2018
 - Link : [Paper](https://arxiv.org/pdf/1511.02680.pdf)
-## Aim :
+### Aim :
 The proposed principled approach to multi-task deep learning weighs multiple loss functions by considering the homoscedastic uncertainty of each task. It simultaneously learn various quantities with different units or scales in both classification and regression settings. 
-## Overview :
+### Overview :
 - Combining all tasks into a single model reduces computation and allows systems to run in real-time. Maually tuning weighed losses for multiple tasks is expensive. 
 - Homoscedastic uncertainty is viewed as task-dependent weighting and a principled multi-task loss function is derived which can learn to balance various regression and classification losses optimally.
 - Scene Geometry and Semantics learnt using 3 tasks :
@@ -234,5 +234,9 @@ Existing literature made use of seperate deep learning models for each of the ta
 - Comibing the above into a single model resulted in the following key contribution :
  - multi-task loss to simultaneously learn various classification and regression losses of varying quantities and units using homoscedastic task uncertainty
  - unified architecture
- - demonstrates importance of loss weighting for multi-task learning.
- 
+ - demonstrates importance of loss weighting for multi-task learning
+- Combining models improved generalisation by sharing the domain information between complimentary tasks. It does this by using a shared representation to learn multiple tasks. This implies that what is learned from one task can be used to learn other tasks. 
+- Previous approaches combined multi objective losses to perform a weighted linear sum of the losses for each individual task. 
+Eq : 
+model performance is extremely sensitive to weight selection, w and its expensive to tune.
+- Deep Convolutional Neural Network architecture is used and a number of convolutional encoders which produce a shared representation, followed by a corresponding number of task-specific convolutional decoders. 
