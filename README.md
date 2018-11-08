@@ -216,3 +216,11 @@ Uncertainty with Distance from Training Data
 - Epistemic uncertainty decreases as the training dataset gets larger.
 - Aleatoric uncertainty remains relatively constant and cannot be explained away with more data
 - Testing the models with a different test set shows that epistemic uncertainty increases considerably 
+
+# Multi-Task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics
+- Author : Alex Kendall,Yarin Gal,Roberto Cipolla
+- Published : 24 April 2018
+- Link : [Paper](https://arxiv.org/pdf/1511.02680.pdf)
+## Aim :
+The proposed principled approach to multi-task deep learning weighs multiple loss functions by considering the homoscedastic uncertainty of each task. It simultaneously learn various quantities with different units or scales in both classification and regression settings. 
+## Overview :
