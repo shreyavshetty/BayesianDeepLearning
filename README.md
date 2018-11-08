@@ -217,10 +217,22 @@ Uncertainty with Distance from Training Data
 - Aleatoric uncertainty remains relatively constant and cannot be explained away with more data
 - Testing the models with a different test set shows that epistemic uncertainty increases considerably 
 
-# Multi-Task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics
+## Multi-Task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics
 - Author : Alex Kendall,Yarin Gal,Roberto Cipolla
 - Published : 24 April 2018
 - Link : [Paper](https://arxiv.org/pdf/1511.02680.pdf)
 ## Aim :
 The proposed principled approach to multi-task deep learning weighs multiple loss functions by considering the homoscedastic uncertainty of each task. It simultaneously learn various quantities with different units or scales in both classification and regression settings. 
 ## Overview :
+- Combining all tasks into a single model reduces computation and allows systems to run in real-time. Maually tuning weighed losses for multiple tasks is expensive. 
+- Homoscedastic uncertainty is viewed as task-dependent weighting and a principled multi-task loss function is derived which can learn to balance various regression and classification losses optimally.
+- Scene Geometry and Semantics learnt using 3 tasks :
+	- semantic segmentation
+	- instance segmentation
+	- pixel-wise metric depth
+Existing literature made use of seperate deep learning models for each of the tasks. 
+- Comibing the above into a single model resulted in the following key contribution :
+ - multi-task loss to simultaneously learn various classification and regression losses of varying quantities and units using homoscedastic task uncertainty
+ - unified architecture
+ - demonstrates importance of loss weighting for multi-task learning.
+ 
